@@ -107,9 +107,9 @@ class _WeigthDifferentPlanetsState extends State<WeigthDifferentPlanets> {
                       maximum: planet == "sun" ? 6000 : 600,
                       minimum: 0,
                       axisLabelStyle: GaugeTextStyle(
-                          fontSize: 9,
-                          color: Colors.grey.withOpacity(0.7),
-                          fontFamily: "Orbitron"),
+                        fontSize: 9,
+                        color: Colors.grey.withOpacity(0.7),
+                      ),
                       pointers: <GaugePointer>[
                         NeedlePointer(
                           value: result,

@@ -66,9 +66,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Orbitron
+    - family: BalooBhai2
       fonts:
-        - asset: fonts/static/Orbitron-Medium.ttf
+        - asset: fonts/BalooBhai1-Bold.ttf
           style: normal
   #
   # For details regarding fonts from package dependencies,
