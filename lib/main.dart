@@ -8,7 +8,7 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: HomePage(),
-    theme: ThemeData(fontFamily: "Orbitron"),
+    theme: ThemeData(fontFamily: "Jost"),
   ));
 }
 
@@ -29,30 +29,46 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return WeigthDifferentPlanets();
-                }));
-              },
-              child: Text("My Weigth In Different Planets")),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return WhoIsBigger();
-                }));
-              },
-              child: Text("Who Is Bigger?")),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return HowFarIsThePlanet();
-                }));
-              },
-              child: Text("How Far Is The Planet?"))
-        ],
+      appBar: AppBar(
+        title: Text(
+          "GaganBot".toUpperCase(),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.blueGrey.shade800,
+        elevation: 0,
+      ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage("assets/images/background.jpg"))),
+        child: ListView(
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return WeigthDifferentPlanets();
+                  }));
+                },
+                child: Text("My Weigth In Different Planets")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return WhoIsBigger();
+                  }));
+                },
+                child: Text("Who Is Bigger?")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return HowFarIsThePlanet();
+                  }));
+                },
+                child: Text("How Far Is The Planet?"))
+          ],
+        ),
       ),
     );
   }

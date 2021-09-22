@@ -53,7 +53,7 @@ class _WhoIsBiggerState extends State<WhoIsBigger> {
           child: ListView(children: [
             Text(
               "I Want To Compare",
-              style: TextStyle(fontSize: 15, color: Colors.white),
+              style: TextStyle(fontSize: 25, color: Colors.white),
             ),
             SizedBox(
               height: 10,
@@ -70,7 +70,7 @@ class _WhoIsBiggerState extends State<WhoIsBigger> {
             ),
             Text(
               "With",
-              style: TextStyle(fontSize: 15, color: Colors.white),
+              style: TextStyle(fontSize: 25, color: Colors.white),
             ),
             SizedBox(
               height: 10,
@@ -87,7 +87,7 @@ class _WhoIsBiggerState extends State<WhoIsBigger> {
             ),
             Text(
               "See How It Looks Like",
-              style: TextStyle(fontSize: 15, color: Colors.white),
+              style: TextStyle(fontSize: 25, color: Colors.white),
             ),
             SizedBox(
               height: 5,
@@ -95,7 +95,7 @@ class _WhoIsBiggerState extends State<WhoIsBigger> {
             InteractiveViewer(
               maxScale: 10,
               child: Container(
-                color: Colors.black,
+                color: Color.fromARGB(255, 6, 18, 33),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -113,7 +113,7 @@ class _WhoIsBiggerState extends State<WhoIsBigger> {
                     Text(
                       fromPlanet.toUpperCase(),
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 12, color: Colors.white),
+                      style: TextStyle(fontSize: 22, color: Colors.white),
                     ),
                     SizedBox(
                       height: 20,
@@ -129,7 +129,7 @@ class _WhoIsBiggerState extends State<WhoIsBigger> {
                     Text(
                       toPlanet.toUpperCase(),
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 12, color: Colors.white),
+                      style: TextStyle(fontSize: 22, color: Colors.white),
                     ),
                     SizedBox(
                       height: 30,
@@ -140,7 +140,7 @@ class _WhoIsBiggerState extends State<WhoIsBigger> {
             ),
             Text(
               textResult,
-              style: TextStyle(color: Colors.red[400]),
+              style: TextStyle(color: Colors.redAccent[400], fontSize: 18),
               textAlign: TextAlign.center,
             ),
             SizedBox(
@@ -148,7 +148,7 @@ class _WhoIsBiggerState extends State<WhoIsBigger> {
             ),
             Text(
               comparisonText,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.white, fontSize: 18),
               textAlign: TextAlign.center,
             ),
             SizedBox(
@@ -168,12 +168,12 @@ class _WhoIsBiggerState extends State<WhoIsBigger> {
               ),
               title: Text(
                 "Do You Know?",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white, fontSize: 18),
               ),
               children: [
                 Text(
-                  "In 200 B.C., the size of the Earth was actually calculated to within 1% accuracy by Eratosthenes !!. Explore and find out how he did it. Aso, find how plant size is measured from Earth (It has something to do with Trignometry).",
-                  style: TextStyle(color: Colors.white),
+                  "In 200 B.C., the size of the Earth was actually calculated to within 1% accuracy by Eratosthenes !!. Explore and find out how he did it. Also, find how plant size is measured from Earth (It has something to do with Trignometry).",
+                  style: TextStyle(color: Colors.white, fontSize: 17),
                 )
               ],
             )

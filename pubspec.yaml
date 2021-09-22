@@ -66,10 +66,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: BalooBhai2
+    - family: Jost
       fonts:
-        - asset: fonts/BalooBhai1-Bold.ttf
-          style: normal
+        - asset: fonts/static/Jost-Medium.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

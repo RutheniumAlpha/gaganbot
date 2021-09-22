@@ -54,14 +54,14 @@ class _HowFarIsThePlanetState extends State<HowFarIsThePlanet> {
             children: [
               Text(
                 "Planets are far away from the Sun. Just feel the distance......",
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                style: TextStyle(fontSize: 17, color: Colors.white),
               ),
               SizedBox(
                 height: 40,
               ),
               Text(
                 "Select The Planet",
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                style: TextStyle(fontSize: 25, color: Colors.white),
               ),
               SizedBox(
                 height: 20,
@@ -78,7 +78,7 @@ class _HowFarIsThePlanetState extends State<HowFarIsThePlanet> {
               ),
               Text(
                 result,
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                style: TextStyle(fontSize: 17, color: Colors.white),
               ),
               SizedBox(
                 height: 30,
@@ -93,7 +93,7 @@ class _HowFarIsThePlanetState extends State<HowFarIsThePlanet> {
               ),
               Text(
                 "How Long To Cover This Distance If You Travel At The Speed Of",
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                style: TextStyle(fontSize: 18, color: Colors.white),
               ),
               SizedBox(
                 height: 10,
@@ -198,7 +198,7 @@ class _HowFarIsThePlanetState extends State<HowFarIsThePlanet> {
               Text(
                 mode,
                 style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 18,
                     color: mode == "Cycle"
                         ? Colors.blue[600]
                         : mode == "F1 Car"
@@ -212,7 +212,7 @@ class _HowFarIsThePlanetState extends State<HowFarIsThePlanet> {
               ),
               Text(
                 modeResult,
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                style: TextStyle(fontSize: 17, color: Colors.white),
               ),
               Text(
                 "*Approximate Values",
@@ -237,13 +237,13 @@ class _HowFarIsThePlanetState extends State<HowFarIsThePlanet> {
                   color: Colors.white,
                 ),
                 title: Text(
-                  "Difference between Weight & Mass?",
-                  style: TextStyle(color: Colors.white),
+                  "What is the next closest star to Earth?",
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 children: [
                   Text(
-                    "Mass is the amount of matter an object contains, and weight, the measurement of the pull of gravity on the object. For example, your mass will be same on all planets, but your weight will be different as the acceleration due to gravity is different on each celestical body.",
-                    style: TextStyle(color: Colors.white),
+                    "The closest star after Sun is Proxima Centauri, which is at a distance of about 3,99,00,00,00,00,000 kilometers!!. On the scale of the universe, measuring distances in kilometers is not a good idea. Instead scientists use a unit called lightyear. Lightyear is the distance light travels in one Earth year. One lightyear is 9.46 trillion kilometers, because light zips through interstellar space at 3,00,000 kilometers per second. Proxima Centauri is 4.25 light years away from us. Much easier to mention right? There is another distance measurement used to describe distance between Sun and planets. Explore and find out.",
+                    style: TextStyle(color: Colors.white, fontSize: 17),
                   )
                 ],
               )
@@ -305,7 +305,9 @@ class _HowFarIsThePlanetState extends State<HowFarIsThePlanet> {
     List<Widget> items = [];
     planets.forEach((element) {
       items.add(TextButton.icon(
-          style: TextButton.styleFrom(onSurface: Colors.grey),
+          style: TextButton.styleFrom(
+              primary: Colors.grey[500],
+              textStyle: TextStyle(fontFamily: "Jost", fontSize: 18)),
           onPressed: () => onPressed(element),
           icon: Image.asset(
             "assets/images/$element.png",

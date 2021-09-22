@@ -23,7 +23,9 @@ class PlanetPicker {
     }
     planets.forEach((element) {
       items.add(TextButton.icon(
-          style: TextButton.styleFrom(onSurface: Colors.grey),
+          style: TextButton.styleFrom(
+              primary: Colors.grey[500],
+              textStyle: TextStyle(fontSize: 18, fontFamily: "Jost")),
           onPressed: () => onPressed(element),
           icon: Image.asset(
             "assets/images/$element.png",

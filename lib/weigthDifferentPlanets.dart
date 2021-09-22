@@ -50,8 +50,8 @@ class _WeigthDifferentPlanetsState extends State<WeigthDifferentPlanets> {
           child: ListView(
             children: [
               Text(
-                "Your Weight On Earth (in kg)?",
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                "Your Weight On Earth (kg)?",
+                style: TextStyle(fontSize: 25, color: Colors.white),
               ),
               SizedBox(
                 height: 20,
@@ -81,7 +81,7 @@ class _WeigthDifferentPlanetsState extends State<WeigthDifferentPlanets> {
               ),
               Text(
                 "Select The Celestial Body",
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                style: TextStyle(fontSize: 25, color: Colors.white),
               ),
               SizedBox(
                 height: 20,
@@ -98,7 +98,7 @@ class _WeigthDifferentPlanetsState extends State<WeigthDifferentPlanets> {
               ),
               Text(
                 "Your Weigth On ${planet.toUpperCase()}:",
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                style: TextStyle(fontSize: 25, color: Colors.white),
               ),
               SfRadialGauge(
                 enableLoadingAnimation: true,
@@ -126,7 +126,7 @@ class _WeigthDifferentPlanetsState extends State<WeigthDifferentPlanets> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 20,
+                                  fontSize: 25,
                                   color: Colors.white),
                             ))
                       ])
@@ -136,7 +136,7 @@ class _WeigthDifferentPlanetsState extends State<WeigthDifferentPlanets> {
                 data["Gravity"] != null
                     ? "Acceleration Due To Gravity in ${planet.toUpperCase()}: \n${double.parse(data["Gravity"][planet].toStringAsFixed(2))} m/s/s"
                     : "Acceleration Due To Gravity On EARTH: \n 9.8 m/s/s",
-                style: TextStyle(color: Colors.red[400]),
+                style: TextStyle(color: Colors.redAccent[400], fontSize: 18),
                 textAlign: TextAlign.center,
               ),
               Divider(
@@ -156,12 +156,12 @@ class _WeigthDifferentPlanetsState extends State<WeigthDifferentPlanets> {
                 ),
                 title: Text(
                   "Difference between Weight & Mass?",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 children: [
                   Text(
                     "Mass is the amount of matter an object contains, and weight, the measurement of the pull of gravity on the object. For example, your mass will be same on all planets, but your weight will be different as the acceleration due to gravity is different on each celestical body.",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white, fontSize: 17),
                   )
                 ],
               )
