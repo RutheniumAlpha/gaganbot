@@ -1,0 +1,68 @@
+{
+    "Mass" : {
+        "sun":1988500,
+        "mercury" : 0.330,
+        "venus" : 4.87,
+        "earth" : 5.97,
+        "moon" : 0.073,
+        "mars" : 0.642,
+        "jupiter" : 1898,
+        "saturn" : 568,
+        "uranus" : 86.8,
+        "neptune" : 102,
+        "pluto" : 0.0146
+        
+    },
+    "Diameter" : {
+        "sun":1391400,
+        "mercury" : 4879,
+        "venus" : 12104,
+        "earth" : 12756,
+        "moon" : 3475,
+        "mars" : 6792,
+        "jupiter" : 142984,
+        "saturn" : 120536,
+        "uranus" : 51118,
+        "neptune" : 49528,
+        "pluto" : 2370
+        
+    },
+    "Gravity" : {
+        "sun":274,
+        "mercury" : 3.7,
+        "venus" : 8.9,
+        "earth" : 9.8,
+        "moon" : 1.6,
+        "mars" : 3.7,
+        "jupiter" : 23.1,
+        "saturn" : 9.0,
+        "uranus" : 8.7,
+        "neptune" : 11.0,
+        "pluto" : 0.7
+
+    },
+    "Escape Velosity" : {
+        "sun":617,
+        "mercury" : 4.3,
+        "venus" : 10.4,
+        "earth" : 11.2,
+        "moon" : 2.4,
+        "mars" : 5.0,
+        "jupiter" :59.5,
+        "saturn" : 35.5,
+        "uranus" : 21.3,
+        "neptune" : 23.5,
+        "pluto" : 1.3
+    },
+    "Distance From Sun" : {
+        "mercury" : 57.9,
+        "venus" : 108.2,
+        "earth" : 149.6,
+        "mars" : 227.9,
+        "jupiter" :778.6,
+        "saturn" : 1433.5,
+        "uranus" : 2872.5,
+        "neptune" : 4495.1,
+        "pluto" : 5906.4
+    }
+}
