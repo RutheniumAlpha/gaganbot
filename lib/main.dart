@@ -1,5 +1,6 @@
 import 'package:atl_space_challenge_project/howFarIsThePlanet.dart';
 import 'package:atl_space_challenge_project/soundsFromSpace.dart';
+import 'package:atl_space_challenge_project/top5elements.dart';
 import 'package:atl_space_challenge_project/weigthDifferentPlanets.dart';
 import 'package:atl_space_challenge_project/whoIsBigger.dart';
 import 'package:flutter/material.dart';
@@ -78,7 +79,7 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return SoundsFromSpace();
+                    return Top5Elements();
                   }));
                 },
                 child: Text("Top 5 Elements In Space")),
