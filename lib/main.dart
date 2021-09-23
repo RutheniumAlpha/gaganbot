@@ -1,4 +1,5 @@
 import 'package:atl_space_challenge_project/howFarIsThePlanet.dart';
+import 'package:atl_space_challenge_project/soundsFromSpace.dart';
 import 'package:atl_space_challenge_project/weigthDifferentPlanets.dart';
 import 'package:atl_space_challenge_project/whoIsBigger.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +67,21 @@ class _HomePageState extends State<HomePage> {
                     return HowFarIsThePlanet();
                   }));
                 },
-                child: Text("How Far Is The Planet?"))
+                child: Text("How Far Is The Planet?")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return SoundsFromSpace();
+                  }));
+                },
+                child: Text("Sounds From Space")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return SoundsFromSpace();
+                  }));
+                },
+                child: Text("Top 5 Elements In Space")),
           ],
         ),
       ),
