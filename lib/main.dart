@@ -1,8 +1,3 @@
-import 'package:atl_space_challenge_project/howFarIsThePlanet.dart';
-import 'package:atl_space_challenge_project/soundsFromSpace.dart';
-import 'package:atl_space_challenge_project/top5elements.dart';
-import 'package:atl_space_challenge_project/weigthDifferentPlanets.dart';
-import 'package:atl_space_challenge_project/whoIsBigger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -31,22 +26,77 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "GaganBot".toUpperCase(),
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: Colors.blueGrey.shade800,
-        elevation: 0,
-      ),
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage("assets/images/background.jpg"))),
-        child: ListView(
+          alignment: Alignment.topCenter,
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage("assets/images/homepagebackground.jpg"))),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Image.asset("assets/images/gaganBot.png"),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 160,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.fitWidth,
+                        image: AssetImage("assets/images/banner.png"))),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                        onPressed: () {},
+                        child: Image(
+                          height: 110,
+                          fit: BoxFit.contain,
+                          image: AssetImage(
+                              "assets/images/buttons/solarSystem.png"),
+                        )),
+                    TextButton(
+                        onPressed: () {},
+                        child: Image(
+                          height: 110,
+                          fit: BoxFit.contain,
+                          image: AssetImage(
+                              "assets/images/buttons/spaceQuest.png"),
+                        )),
+                    TextButton(
+                        onPressed: () {},
+                        child: Image(
+                          height: 110,
+                          fit: BoxFit.contain,
+                          image:
+                              AssetImage("assets/images/buttons/spaceBase.png"),
+                        )),
+                    TextButton(
+                        onPressed: () {},
+                        child: Image(
+                          height: 110,
+                          fit: BoxFit.contain,
+                          image:
+                              AssetImage("assets/images/buttons/funSpace.png"),
+                        ))
+                  ],
+                ),
+              )
+            ],
+          )),
+    );
+  }
+}
+
+/*ListView(
           children: [
             ElevatedButton(
                 onPressed: () {
@@ -83,9 +133,12 @@ class _HomePageState extends State<HomePage> {
                   }));
                 },
                 child: Text("Top 5 Elements In Space")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return WhereIsISS();
+                  }));
+                },
+                child: Text("Top 5 Elements In Space")),
           ],
-        ),
-      ),
-    );
-  }
-}
+        ), */

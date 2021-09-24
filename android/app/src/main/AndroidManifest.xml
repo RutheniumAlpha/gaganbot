@@ -4,6 +4,9 @@
         android:label="GaganBot"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCAnFcor6j7iOItQdF-hE3VjWAepd4O1p4" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
