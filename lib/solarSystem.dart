@@ -31,23 +31,23 @@ class _SolarSystemState extends State<SolarSystem> {
                 child: ListView(
                   children: [
                     createButton(
-                        MaterialPageRoute(
-                            builder: (context) => WeigthDifferentPlanets()),
-                        "Weight Checker",
-                        context),
+                      MaterialPageRoute(
+                          builder: (context) => WeigthDifferentPlanets()),
+                      "Weight Checker",
+                    ),
                     createButton(
-                        MaterialPageRoute(builder: (context) => WhoIsBigger()),
-                        "Who Is Bigger",
-                        context),
+                      MaterialPageRoute(builder: (context) => WhoIsBigger()),
+                      "Who Is Bigger",
+                    ),
                     createButton(
-                        MaterialPageRoute(builder: (context) => Top5Elements()),
-                        "Planet Composition",
-                        context),
+                      MaterialPageRoute(builder: (context) => Top5Elements()),
+                      "Planet Composition",
+                    ),
                     createButton(
-                        MaterialPageRoute(
-                            builder: (context) => HowFarIsThePlanet()),
-                        "Feel The Distance",
-                        context),
+                      MaterialPageRoute(
+                          builder: (context) => HowFarIsThePlanet()),
+                      "Feel The Distance",
+                    ),
                   ],
                 ),
               ),
@@ -57,32 +57,32 @@ class _SolarSystemState extends State<SolarSystem> {
       ),
     );
   }
-}
 
-Widget createButton(
-    MaterialPageRoute route, String name, BuildContext context) {
-  return TextButton(
-      onPressed: () {
-        Navigator.push(context, route);
-      },
-      child: Card(
-        color: Colors.white.withOpacity(0.4),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-        elevation: 10,
-        child: Container(
-          alignment: Alignment.center,
-          child: Text(
-            name,
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                letterSpacing: 3),
+  Widget createButton(MaterialPageRoute route, String name) {
+    return TextButton(
+        onPressed: () {
+          Navigator.push(context, route);
+        },
+        child: Card(
+          color: Colors.white.withOpacity(0.4),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+          elevation: 10,
+          child: Container(
+            alignment: Alignment.center,
+            child: Text(
+              name,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  letterSpacing: 3),
+            ),
+            height: 60,
+            width: double.infinity,
           ),
-          height: 60,
-          width: double.infinity,
-        ),
-      ));
+        ));
+  }
 }

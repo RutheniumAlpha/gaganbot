@@ -1,4 +1,5 @@
 import 'package:atl_space_challenge_project/soundsFromSpace.dart';
+import 'package:atl_space_challenge_project/starSizeComparison.dart';
 import 'package:flutter/material.dart';
 
 class SpaceQuest extends StatefulWidget {
@@ -28,10 +29,15 @@ class _SpaceQuestState extends State<SpaceQuest> {
                 child: ListView(
                   children: [
                     createButton(
-                        MaterialPageRoute(
-                            builder: (context) => SoundsFromSpace()),
-                        "Sounds From Space",
-                        context),
+                      MaterialPageRoute(
+                          builder: (context) => SoundsFromSpace()),
+                      "Sounds From Space",
+                    ),
+                    createButton(
+                      MaterialPageRoute(
+                          builder: (context) => UniverseSizeComparison()),
+                      "Star Size Comparison",
+                    ),
                   ],
                 ),
               ),
@@ -41,32 +47,32 @@ class _SpaceQuestState extends State<SpaceQuest> {
       ),
     );
   }
-}
 
-Widget createButton(
-    MaterialPageRoute route, String name, BuildContext context) {
-  return TextButton(
-      onPressed: () {
-        Navigator.push(context, route);
-      },
-      child: Card(
-        color: Colors.white.withOpacity(0.4),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-        elevation: 10,
-        child: Container(
-          alignment: Alignment.center,
-          child: Text(
-            name,
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                letterSpacing: 3),
+  Widget createButton(MaterialPageRoute route, String name) {
+    return TextButton(
+        onPressed: () {
+          Navigator.push(context, route);
+        },
+        child: Card(
+          color: Colors.white.withOpacity(0.4),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+          elevation: 10,
+          child: Container(
+            alignment: Alignment.center,
+            child: Text(
+              name,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  letterSpacing: 3),
+            ),
+            height: 60,
+            width: double.infinity,
           ),
-          height: 60,
-          width: double.infinity,
-        ),
-      ));
+        ));
+  }
 }
