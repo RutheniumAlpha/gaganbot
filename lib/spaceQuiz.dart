@@ -491,13 +491,18 @@ class _QuizResultsState extends State<QuizResults> {
                         width: 20,
                       ),
                       Text(
-                        (previousScore - score).toString(),
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: (previousScore - score).isNegative
-                                ? Colors.red
-                                : Colors.green),
-                      ),
+                          score > previousScore
+                              ? "+ ${score - previousScore}"
+                              : previousScore > score
+                                  ? "- ${previousScore - score}"
+                                  : "",
+                          style: TextStyle(
+                              fontSize: 25,
+                              color: score > previousScore
+                                  ? Colors.green
+                                  : previousScore > score
+                                      ? Colors.red
+                                      : Colors.white)),
                     ],
                   ),
                   SizedBox(

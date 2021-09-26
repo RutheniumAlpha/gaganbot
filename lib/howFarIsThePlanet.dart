@@ -161,7 +161,7 @@ class _HowFarIsThePlanetState extends State<HowFarIsThePlanet> {
                     ),
                     GestureDetector(
                       child: Image.asset(
-                        "assets/images/icons/rocket.png",
+                        "assets/images/icons/rocketFeeltheDistance.png",
                         height: 50,
                         fit: BoxFit.contain,
                       ),
