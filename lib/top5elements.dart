@@ -36,7 +36,7 @@ class _Top5ElementsState extends State<Top5Elements> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Top 5 Elements".toUpperCase(),
+          "Planet Composition".toUpperCase(),
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.blueGrey.shade800,

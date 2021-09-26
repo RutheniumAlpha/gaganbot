@@ -1,7 +1,21 @@
+import 'dart:io';
+
+import 'package:atl_space_challenge_project/funSpace.dart';
+import 'package:atl_space_challenge_project/solarSystem.dart';
+import 'package:atl_space_challenge_project/spaceBase.dart';
+import 'package:atl_space_challenge_project/spaceQuest.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Directory path = await getApplicationDocumentsDirectory();
+  Hive.init(path.path);
+  Hive.openBox("quizUserPoints");
+  await Firebase.initializeApp();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: HomePage(),
@@ -56,7 +70,12 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SolarSystem()));
+                        },
                         child: Image(
                           height: 110,
                           fit: BoxFit.contain,
@@ -64,7 +83,12 @@ class _HomePageState extends State<HomePage> {
                               "assets/images/buttons/solarSystem.png"),
                         )),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SpaceQuest()));
+                        },
                         child: Image(
                           height: 110,
                           fit: BoxFit.contain,
@@ -72,7 +96,12 @@ class _HomePageState extends State<HomePage> {
                               "assets/images/buttons/spaceQuest.png"),
                         )),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SpaceBase()));
+                        },
                         child: Image(
                           height: 110,
                           fit: BoxFit.contain,
@@ -80,7 +109,12 @@ class _HomePageState extends State<HomePage> {
                               AssetImage("assets/images/buttons/spaceBase.png"),
                         )),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => FunSpace()));
+                        },
                         child: Image(
                           height: 110,
                           fit: BoxFit.contain,
@@ -89,56 +123,21 @@ class _HomePageState extends State<HomePage> {
                         ))
                   ],
                 ),
-              )
+              ),
+              Expanded(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Image.asset(
+                    "assets/images/astronaut.png",
+                    fit: BoxFit.contain,
+                  )
+                ],
+              ))
             ],
           )),
     );
   }
 }
 
-/*ListView(
-          children: [
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return WeigthDifferentPlanets();
-                  }));
-                },
-                child: Text("My Weigth In Different Planets")),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return WhoIsBigger();
-                  }));
-                },
-                child: Text("Who Is Bigger?")),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return HowFarIsThePlanet();
-                  }));
-                },
-                child: Text("How Far Is The Planet?")),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return SoundsFromSpace();
-                  }));
-                },
-                child: Text("Sounds From Space")),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return Top5Elements();
-                  }));
-                },
-                child: Text("Top 5 Elements In Space")),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return WhereIsISS();
-                  }));
-                },
-                child: Text("Top 5 Elements In Space")),
-          ],
-        ), */
+/* */
