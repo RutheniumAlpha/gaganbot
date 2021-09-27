@@ -1,4 +1,5 @@
 import 'package:atl_space_challenge_project/howFarIsThePlanet.dart';
+import 'package:atl_space_challenge_project/solarSystem3DView.dart';
 import 'package:atl_space_challenge_project/top5elements.dart';
 import 'package:atl_space_challenge_project/weigthDifferentPlanets.dart';
 import 'package:atl_space_challenge_project/whoIsBigger.dart';
@@ -30,24 +31,151 @@ class _SolarSystemState extends State<SolarSystem> {
                 padding: const EdgeInsets.all(20),
                 child: ListView(
                   children: [
-                    createButton(
-                      MaterialPageRoute(
-                          builder: (context) => WeigthDifferentPlanets()),
-                      "Weight Checker",
-                    ),
-                    createButton(
-                      MaterialPageRoute(builder: (context) => WhoIsBigger()),
-                      "Who Is Bigger",
-                    ),
-                    createButton(
-                      MaterialPageRoute(builder: (context) => Top5Elements()),
-                      "Planet Composition",
-                    ),
-                    createButton(
-                      MaterialPageRoute(
-                          builder: (context) => HowFarIsThePlanet()),
-                      "Feel The Distance",
-                    ),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => WeigthDifferentPlanets()),
+                          );
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Weight Checker",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => WhoIsBigger()),
+                          );
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Who Is Bigger",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Top5Elements()),
+                          );
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Planet Composition",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HowFarIsThePlanet()),
+                          );
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Feel The Distance",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SolarSystem3DView()),
+                          );
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Solar System 3D View",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
                   ],
                 ),
               ),
@@ -56,33 +184,5 @@ class _SolarSystemState extends State<SolarSystem> {
         ),
       ),
     );
-  }
-
-  Widget createButton(MaterialPageRoute route, String name) {
-    return TextButton(
-        onPressed: () {
-          Navigator.push(context, route);
-        },
-        child: Card(
-          color: Colors.white.withOpacity(0.4),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-          elevation: 10,
-          child: Container(
-            alignment: Alignment.center,
-            child: Text(
-              name,
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  letterSpacing: 3),
-            ),
-            height: 60,
-            width: double.infinity,
-          ),
-        ));
   }
 }

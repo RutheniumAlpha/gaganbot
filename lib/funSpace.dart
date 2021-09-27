@@ -1,3 +1,4 @@
+import 'package:atl_space_challenge_project/howFastYouSpin.dart';
 import 'package:atl_space_challenge_project/spaceQuiz.dart';
 import 'package:atl_space_challenge_project/whereIsISS.dart';
 import 'package:flutter/material.dart';
@@ -28,14 +29,92 @@ class _FunSpaceState extends State<FunSpace> {
                 padding: const EdgeInsets.all(20),
                 child: ListView(
                   children: [
-                    createButton(
-                      MaterialPageRoute(builder: (context) => WhereIsISS()),
-                      "Track The Station",
-                    ),
-                    createButton(
-                      MaterialPageRoute(builder: (context) => QuizHomePage()),
-                      "Gagan Quiz",
-                    ),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => WhereIsISS()));
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Track The Station",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => QuizHomePage()),
+                          );
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Gagan Quiz",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HowFastYouSpin()),
+                          );
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "How Fast You Spin",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
                   ],
                 ),
               ),
@@ -44,33 +123,5 @@ class _FunSpaceState extends State<FunSpace> {
         ),
       ),
     );
-  }
-
-  Widget createButton(MaterialPageRoute route, String name) {
-    return TextButton(
-        onPressed: () {
-          Navigator.push(context, route);
-        },
-        child: Card(
-          color: Colors.white.withOpacity(0.4),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-          elevation: 10,
-          child: Container(
-            alignment: Alignment.center,
-            child: Text(
-              name,
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  letterSpacing: 3),
-            ),
-            height: 60,
-            width: double.infinity,
-          ),
-        ));
   }
 }

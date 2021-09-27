@@ -161,9 +161,11 @@ class _SpaceBooksState extends State<SpaceBooks> {
       }
     });
     wantedBooks = books;
-    setState(() {
-      loading = false;
-    });
+    if (mounted) {
+      setState(() {
+        loading = false;
+      });
+    }
     // if (books.length >= 15) {
     //   for (var i = 0; i < 15; i++) {
     //     wantedBooks.add(books[i]);

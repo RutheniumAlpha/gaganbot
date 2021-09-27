@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.madhavanair.gaganbot">
+   <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="GaganBot"
         android:icon="@mipmap/ic_launcher"

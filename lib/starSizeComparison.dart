@@ -22,12 +22,11 @@ class _UniverseSizeComparisonState extends State<UniverseSizeComparison> {
         .loadString("assets/data/starComparison.json"));
   }
 
-  var data = {};
+  Map? data;
   String fromStar = "Sun||Yellow";
   String toStar = "Sirius A||White";
   double fromPlanetSize = 0;
   double toPlanetSize = 0;
-  String textResult = "";
   String comparisonText = "";
 
   @override
@@ -57,19 +56,21 @@ class _UniverseSizeComparisonState extends State<UniverseSizeComparison> {
           padding: const EdgeInsets.all(15),
           child: ListView(children: [
             Text(
-              "I Want To Compare Sun With",
+              "Sun Compared With",
               style: TextStyle(fontSize: 25, color: Colors.white),
             ),
             SizedBox(
               height: 10,
             ),
-            Container(
-                width: 330,
-                height: 90,
-                child: create((t) {
-                  toStar = t;
-                  compare();
-                })),
+            data != null
+                ? Container(
+                    width: 330,
+                    height: 90,
+                    child: create((t) {
+                      toStar = t;
+                      compare();
+                    }))
+                : SizedBox(),
             SizedBox(
               height: 20,
             ),
@@ -154,6 +155,33 @@ class _UniverseSizeComparisonState extends State<UniverseSizeComparison> {
             SizedBox(
               height: 10,
             ),
+            Text(
+              data != null
+                  ? "${toStar.split("||")[0]} Type: " +
+                      data![toStar.split("||")[0]]["Type"]
+                  : "",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 18, color: Colors.orange),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              data != null
+                  ? "${toStar.split("||")[0]} Distance From Earth:\n" +
+                      data![toStar.split("||")[0]]["Distance From Earth"]
+                  : "",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 18, color: Colors.green),
+            ),
+            Text(
+              "*Approximate Values",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 10, color: Colors.white),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Divider(
               height: 10,
               color: Colors.white.withOpacity(0.3),
@@ -185,7 +213,7 @@ class _UniverseSizeComparisonState extends State<UniverseSizeComparison> {
 
   Widget create(Function(String t) onPressed) {
     List<String> planets = [];
-    data.forEach((key, value) {
+    data!.forEach((key, value) {
       planets.add("$key||${value["Type"].toString().split(" ")[0]}");
     });
     List<Widget> items = [];
@@ -229,18 +257,18 @@ class _UniverseSizeComparisonState extends State<UniverseSizeComparison> {
 
   void compare() {
     double p1 =
-        double.parse(data[fromStar.split("||")[0]]["Times Bigger"].toString());
+        double.parse(data![fromStar.split("||")[0]]["Times Bigger"].toString());
     double p2 =
-        double.parse(data[toStar.split("||")[0]]["Times Bigger"].toString());
+        double.parse(data![toStar.split("||")[0]]["Times Bigger"].toString());
     if (p1 < p2) {
       toPlanetSize = MediaQuery.of(context).size.width * 0.7;
       fromPlanetSize = MediaQuery.of(context).size.width * 0.7 / p2;
+      comparisonText = "${toStar.split("||")[0]} is $p2 times bigger than Sun";
     } else if (p1 == p2) {
       fromPlanetSize = MediaQuery.of(context).size.width * 0.7;
       toPlanetSize = MediaQuery.of(context).size.width * 0.7;
-      textResult = "Looks like we are the same!!";
+      comparisonText = "Looks like we are the same!!";
     }
-
     setState(() {});
   }
 }

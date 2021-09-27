@@ -28,16 +28,64 @@ class _SpaceQuestState extends State<SpaceQuest> {
                 padding: const EdgeInsets.all(20),
                 child: ListView(
                   children: [
-                    createButton(
-                      MaterialPageRoute(
-                          builder: (context) => SoundsFromSpace()),
-                      "Sounds From Space",
-                    ),
-                    createButton(
-                      MaterialPageRoute(
-                          builder: (context) => UniverseSizeComparison()),
-                      "Star Size Comparison",
-                    ),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SoundsFromSpace()),
+                          );
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Sounds From Space",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UniverseSizeComparison()),
+                          );
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Star Size Comparison",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
                   ],
                 ),
               ),
@@ -46,33 +94,5 @@ class _SpaceQuestState extends State<SpaceQuest> {
         ),
       ),
     );
-  }
-
-  Widget createButton(MaterialPageRoute route, String name) {
-    return TextButton(
-        onPressed: () {
-          Navigator.push(context, route);
-        },
-        child: Card(
-          color: Colors.white.withOpacity(0.4),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-          elevation: 10,
-          child: Container(
-            alignment: Alignment.center,
-            child: Text(
-              name,
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  letterSpacing: 3),
-            ),
-            height: 60,
-            width: double.infinity,
-          ),
-        ));
   }
 }
