@@ -1,3 +1,4 @@
+import 'package:atl_space_challenge_project/compareRockets.dart';
 import 'package:atl_space_challenge_project/howFastYouSpin.dart';
 import 'package:atl_space_challenge_project/spaceQuiz.dart';
 import 'package:atl_space_challenge_project/whereIsISS.dart';
@@ -103,6 +104,35 @@ class _FunSpaceState extends State<FunSpace> {
                             alignment: Alignment.center,
                             child: Text(
                               "How Fast You Spin",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CompareRockets()),
+                          );
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Compare Rockets",
                               textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(

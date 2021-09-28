@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -12,12 +13,26 @@ class _SoundsFromSpaceState extends State<SoundsFromSpace> {
   @override
   void initState() {
     super.initState();
+    Timer(Duration(seconds: 1), () {
+      setState(() {});
+    });
+    player.positionStream.listen((event) async {
+      if (player.duration != null) {
+        if (player.duration!.inSeconds == player.position.inSeconds) {
+          await player.seek(Duration(seconds: 0));
+          await player.pause();
+        }
+      }
+      if (mounted) {
+        setState(() {});
+      }
+    });
   }
 
   @override
   void dispose() {
-    super.dispose();
     player.stop();
+    super.dispose();
   }
 
   AudioPlayer player = AudioPlayer();
@@ -44,6 +59,7 @@ class _SoundsFromSpaceState extends State<SoundsFromSpace> {
   int? selectedSound;
   @override
   Widget build(BuildContext context) {
+    print(player.duration);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -52,6 +68,12 @@ class _SoundsFromSpaceState extends State<SoundsFromSpace> {
         ),
         backgroundColor: Colors.blueGrey.shade800,
         elevation: 0,
+        leading: IconButton(
+            onPressed: () async {
+              await player.pause();
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back)),
       ),
       body: Container(
         height: double.infinity,
@@ -144,20 +166,13 @@ class _SoundsFromSpaceState extends State<SoundsFromSpace> {
                           setState(() {
                             selectedSound = count;
                           });
-                          setState(() {});
-                          print(selectedSound);
-                          print(count);
                           await player.setUrl(sounds[count]["URL"]);
                           await player.load();
+                          setState(() {});
+                          print(player.duration);
                           await player.play();
-                          player.positionStream.listen((event) async {
-                            if (player.duration!.inSeconds ==
-                                player.position.inSeconds) {
-                              await player.seek(Duration(seconds: 0));
-                              await player.pause();
-                            }
-                            setState(() {});
-                          });
+                          setState(() {});
+                          setState(() {});
                         });
                   },
                 ),
