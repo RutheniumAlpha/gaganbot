@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -42,18 +43,51 @@ class _SoundsFromSpaceState extends State<SoundsFromSpace> {
       "URL":
           "https://static.wixstatic.com/mp3/0cb73c_f7a3334a65a142ebbf2c571c8adbd732.mp3",
       "Description":
-          "UGDWyifygduyGFUOgfuydgfuwgeygfeuwgfUYECYVEFVYKwvKGHWVFKYAWVFKVGDSUKVKCVUVKCDVCUDVkyaVCAYKDVC",
+          "Sound of the wind on Mars recorded by NASA's Perseverance rover on Feb. 22, 2021",
       "Credit": "NASA",
       "Image": "mars",
     },
     {
-      "Name": "Wind Of Earth",
-      "URL":
-          "https://static.wixstatic.com/mp3/0cb73c_f7a3334a65a142ebbf2c571c8adbd732.mp3",
+      "Name": "'Thats One Small Step For Man' - Neil Amstrong",
+      "URL": "https://www.nasa.gov/mp3/590331main_ringtone_smallStep.mp3",
       "Description":
-          "UGDWyifygduyGFUOgfuydgfuwgeygfeuwgfUYECYVEFVYKwvKGHWVFKYAWVFKVGDSUKVKCVUVKCDVCUDVkyaVCAYKDVC",
+          "Radio communication from Neil Amstrong after Apollo 11 landing on Moon on 24 July 1969",
+      "Credit": "NASA",
+      "Image": "moon",
+    },
+    {
+      "Name": "Sputnik Beep Sound",
+      "URL": "https://www.nasa.gov/mp3/578626main_sputnik-beep.mp3",
+      "Description":
+          "A simple beeping radio signal that captivated the world after 5th October 1957. Yes, it is the radio beeps from Sputnik, the first man made satlight by Soviet Union",
       "Credit": "NASA",
       "Image": "earth",
+    },
+    {
+      "Name": "Saturn's Radio Emission",
+      "URL": "https://www.nasa.gov/wav/123160main_cas-skr2-072504.wav",
+      "Description":
+          "Saturn is a source of intense radio emissions which is closely related to the auroras near the poles of the planet. This is an audio file of Saturn's radio emissions",
+      "Credit": "NASA",
+      "Image": "saturn",
+    },
+    {
+      "Name": "Sound Of The Big Bang",
+      "URL":
+          "http://faculty.washington.edu/jcramer/BigBang/WMAP_2003/BBSnd50.wav",
+      "Description":
+          "Using data from a NASA satellite called WMAP, John G. Cramer plugged in the frequency spectrum from the Big Bang into some software to turn the data into a sound file. Search the web to know more.",
+      "Credit": "John G. Cramer - 2003",
+      "Image": "galaxy",
+    },
+    {
+      "Name": "Sound Of The Vela Pulsar",
+      "URL":
+          "https://www.parkes.atnf.csiro.au/people/sar049/eternal_life/supernova/vela.wav",
+      "Description":
+          "THis is the radio emission from Vela Pulsar.A pulsar is a highly magnetised neutron star. Radiation is beamed out along the magnetic poles and pulses of radiation are received as the beam crosses the Earth.",
+      "Credit": "Australia Telescope National Facility",
+      "Image": "galaxy",
     }
   ];
   int? selectedSound;
@@ -62,9 +96,21 @@ class _SoundsFromSpaceState extends State<SoundsFromSpace> {
     print(player.duration);
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Sounds From Space".toUpperCase(),
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              "Sounds From Space".toUpperCase(),
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "Headphone Recommended",
+              overflow: TextOverflow.clip,
+              style: TextStyle(color: Colors.white, fontSize: 15),
+            ),
+          ],
         ),
         backgroundColor: Colors.blueGrey.shade800,
         elevation: 0,
@@ -129,6 +175,7 @@ class _SoundsFromSpaceState extends State<SoundsFromSpace> {
                   ? Text(
                       sounds[selectedSound!]["Name"],
                       style: TextStyle(fontSize: 25, color: Colors.white),
+                      textAlign: TextAlign.center,
                     )
                   : SizedBox(),
               player.duration != null
@@ -153,15 +200,24 @@ class _SoundsFromSpaceState extends State<SoundsFromSpace> {
                     );
                   },
                   itemBuilder: (context, count) {
+                    List<Color> colors = [
+                      Colors.purple.shade800,
+                      Colors.indigo,
+                      Colors.blue,
+                      Colors.green,
+                      Colors.yellow.shade700,
+                      Colors.orange,
+                      Colors.red
+                    ];
+                    final random = Random();
                     return ListTile(
-                        leading: Image(
-                          image: AssetImage(
-                              "assets/images/${sounds[count]["Image"]}.png"),
-                          height: 50,
+                        leading: Icon(
+                          Icons.music_note,
+                          color: colors[random.nextInt(6)],
                         ),
                         trailing: Icon(Icons.arrow_forward_ios),
                         title: Text(sounds[count]["Name"]),
-                        subtitle: Text(sounds[count]["Credit"]),
+                        subtitle: Text("Source: " + sounds[count]["Credit"]),
                         onTap: () async {
                           setState(() {
                             selectedSound = count;

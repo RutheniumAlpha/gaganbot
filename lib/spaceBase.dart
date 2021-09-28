@@ -1,5 +1,7 @@
+import 'package:atl_space_challenge_project/indianSpaceSpots.dart';
 import 'package:atl_space_challenge_project/isroTimeLine.dart';
 import 'package:atl_space_challenge_project/spaceBooks.dart';
+import 'package:atl_space_challenge_project/spaceWeb.dart';
 import 'package:atl_space_challenge_project/virtualTours.dart';
 import 'package:flutter/material.dart';
 
@@ -109,6 +111,68 @@ class _SpaceBaseState extends State<SpaceBase> {
                             alignment: Alignment.center,
                             child: Text(
                               "Virtual Tours",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Future.delayed(Duration(seconds: 0), () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => IndianSpaceSpots()),
+                            );
+                          });
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Indian Space Spots",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Future.delayed(Duration(seconds: 0), () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SpaceWeb()),
+                            );
+                          });
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Space Web",
                               textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(

@@ -1,4 +1,5 @@
 import 'package:atl_space_challenge_project/cosmicObjects.dart';
+import 'package:atl_space_challenge_project/indianSkyMap.dart';
 import 'package:atl_space_challenge_project/soundsFromSpace.dart';
 import 'package:atl_space_challenge_project/starSizeComparison.dart';
 import 'package:flutter/material.dart';
@@ -104,6 +105,35 @@ class _SpaceQuestState extends State<SpaceQuest> {
                             alignment: Alignment.center,
                             child: Text(
                               "Cosmic Objects",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => IndianSkyMap()),
+                          );
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Indian Sky Map",
                               textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(

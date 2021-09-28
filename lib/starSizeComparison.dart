@@ -179,32 +179,6 @@ class _UniverseSizeComparisonState extends State<UniverseSizeComparison> {
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 10, color: Colors.white),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Divider(
-              height: 10,
-              color: Colors.white.withOpacity(0.3),
-              thickness: 1,
-            ),
-            ExpansionTile(
-              collapsedIconColor: Colors.white,
-              iconColor: Colors.white,
-              leading: Icon(
-                Icons.help_outline_outlined,
-                color: Colors.white,
-              ),
-              title: Text(
-                "Do You Know?",
-                style: TextStyle(color: Colors.white, fontSize: 18),
-              ),
-              children: [
-                Text(
-                  "In 200 B.C., the size of the Earth was actually calculated to within 1% accuracy by Eratosthenes !!. Explore and find out how he did it. Also, find how plant size is measured from Earth (It has something to do with Trignometry).",
-                  style: TextStyle(color: Colors.white, fontSize: 17),
-                )
-              ],
-            )
           ]),
         ),
       ),

@@ -7,6 +7,8 @@ class VirtualTours extends StatefulWidget {
 }
 
 class _VirtualToursState extends State<VirtualTours> {
+  FixedExtentScrollController fixedExtentScrollController =
+      FixedExtentScrollController();
   @override
   void initState() {
     super.initState();
