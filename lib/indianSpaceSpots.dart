@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class IndianSpaceSpots extends StatefulWidget {
@@ -16,7 +17,7 @@ bool loading = false;
 class _IndianSpaceSpotsState extends State<IndianSpaceSpots> {
   final ref = fb.reference();
   List<Map> books = [];
-  List<Map> wantedBooks = [];
+  List<Map> wantedSpots = [];
   void initState() {
     super.initState();
     refresh();
@@ -86,9 +87,9 @@ class _IndianSpaceSpotsState extends State<IndianSpaceSpots> {
                                   minVerticalPadding: 0,
                                   minLeadingWidth: 35,
                                   onTap: () {
-                                    if (wantedBooks[count]["Link"] !=
+                                    if (wantedSpots[count]["Link"] !=
                                         "No Link") {
-                                      launch(wantedBooks[count]["Link"]);
+                                      launch(wantedSpots[count]["Link"]);
                                     }
                                   },
                                   leading: Icon(
@@ -97,14 +98,14 @@ class _IndianSpaceSpotsState extends State<IndianSpaceSpots> {
                                     size: 35,
                                   ),
                                   title: Text(
-                                    wantedBooks[count]["Name"],
+                                    wantedSpots[count]["Name"],
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 20),
                                   ),
                                   subtitle: Text(
-                                    wantedBooks[count]["Location"] +
+                                    wantedSpots[count]["Location"] +
                                         "\n" +
-                                        wantedBooks[count]["Type"],
+                                        wantedSpots[count]["Type"],
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(color: Colors.grey[400]),
                                   ),
@@ -121,7 +122,7 @@ class _IndianSpaceSpotsState extends State<IndianSpaceSpots> {
                                 color: Colors.grey.withOpacity(0.4),
                               );
                             },
-                            itemCount: wantedBooks.length,
+                            itemCount: wantedSpots.length,
                           ),
                         ),
                       ),
@@ -133,30 +134,38 @@ class _IndianSpaceSpotsState extends State<IndianSpaceSpots> {
 
   Future<void> refresh() async {
     books = [];
-    wantedBooks = [];
-    setState(() {
-      loading = true;
-    });
-    await ref.child("Space Spots").once().then((value) {
-      List result = value.value;
-      for (var i = 0; i < result.length; i++) {
-        books.add(result.reversed.toList()[i]);
-        print(books);
-      }
-    });
-    wantedBooks = books;
-    if (mounted) {
+    wantedSpots = [];
+    if (await InternetConnectionChecker().hasConnection) {
       setState(() {
-        loading = false;
+        loading = true;
       });
+      await ref.child("Space Spots").once().then((value) {
+        List result = value.value;
+        for (var i = 0; i < result.length; i++) {
+          books.add(result.reversed.toList()[i]);
+          print(books);
+        }
+      });
+      wantedSpots = books;
+      if (mounted) {
+        setState(() {
+          loading = false;
+        });
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("No Internet Connection!"),
+        backgroundColor: Colors.red,
+        duration: Duration(seconds: 5),
+      ));
     }
     // if (books.length >= 15) {
     //   for (var i = 0; i < 15; i++) {
-    //     wantedBooks.add(books[i]);
+    //     wantedSpots.add(books[i]);
     //   }
     // } else {
     //   for (var i = 0; i < books.length; i++) {
-    //     wantedBooks.add(books[i]);
+    //     wantedSpots.add(books[i]);
     //   }
     // }
   }

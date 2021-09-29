@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SpaceWeb extends StatefulWidget {
@@ -16,7 +17,7 @@ bool loading = false;
 class _SpaceWebState extends State<SpaceWeb> {
   final ref = fb.reference();
   List<Map> books = [];
-  List<Map> wantedBooks = [];
+  List<Map> wantedWebPages = [];
   void initState() {
     super.initState();
     refresh();
@@ -86,7 +87,7 @@ class _SpaceWebState extends State<SpaceWeb> {
                                   minVerticalPadding: 0,
                                   minLeadingWidth: 35,
                                   onTap: () {
-                                    launch(wantedBooks[count]["Link"]);
+                                    launch(wantedWebPages[count]["Link"]);
                                   },
                                   leading: Icon(
                                     Icons.language,
@@ -94,12 +95,12 @@ class _SpaceWebState extends State<SpaceWeb> {
                                     size: 35,
                                   ),
                                   title: Text(
-                                    wantedBooks[count]["Title"],
+                                    wantedWebPages[count]["Title"],
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 20),
                                   ),
                                   subtitle: Text(
-                                    wantedBooks[count]["Description"],
+                                    wantedWebPages[count]["Description"],
                                     style: TextStyle(color: Colors.grey[400]),
                                   ),
                                   trailing: Icon(
@@ -115,7 +116,7 @@ class _SpaceWebState extends State<SpaceWeb> {
                                 color: Colors.grey.withOpacity(0.4),
                               );
                             },
-                            itemCount: wantedBooks.length,
+                            itemCount: wantedWebPages.length,
                           ),
                         ),
                       ),
@@ -127,30 +128,38 @@ class _SpaceWebState extends State<SpaceWeb> {
 
   Future<void> refresh() async {
     books = [];
-    wantedBooks = [];
-    setState(() {
-      loading = true;
-    });
-    await ref.child("Space Web").once().then((value) {
-      List result = value.value;
-      for (var i = 0; i < result.length; i++) {
-        books.add(result.reversed.toList()[i]);
-        print(books);
-      }
-    });
-    wantedBooks = books;
-    if (mounted) {
+    wantedWebPages = [];
+    if (await InternetConnectionChecker().hasConnection) {
       setState(() {
-        loading = false;
+        loading = true;
       });
+      await ref.child("Space Web").once().then((value) {
+        List result = value.value;
+        for (var i = 0; i < result.length; i++) {
+          books.add(result.reversed.toList()[i]);
+          print(books);
+        }
+      });
+      wantedWebPages = books;
+      if (mounted) {
+        setState(() {
+          loading = false;
+        });
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("No Internet Connection!"),
+        backgroundColor: Colors.red,
+        duration: Duration(seconds: 5),
+      ));
     }
     // if (books.length >= 15) {
     //   for (var i = 0; i < 15; i++) {
-    //     wantedBooks.add(books[i]);
+    //     wantedWebPages.add(books[i]);
     //   }
     // } else {
     //   for (var i = 0; i < books.length; i++) {
-    //     wantedBooks.add(books[i]);
+    //     wantedWebPages.add(books[i]);
     //   }
     // }
   }

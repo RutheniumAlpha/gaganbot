@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class WhereIsISS extends StatefulWidget {
   @override
@@ -14,28 +16,54 @@ class WhereIsISS extends StatefulWidget {
 class _WhereIsISSState extends State<WhereIsISS> {
   void initState() {
     loadData();
-    Timer.periodic(Duration(seconds: 1), (timer) {
-      http
-          .get(Uri.parse("http://api.open-notify.org/astros.json"))
-          .then((value) {
-        totalPeople = jsonDecode(value.body);
-      });
-      http
-          .get(Uri.parse("https://api.wheretheiss.at/v1/satellites/25544"))
-          .then((response) {
-        position = jsonDecode(response.body);
-        setState(() {});
-        controller.future.then((value) async {
-          if (position != null) {
-            value.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-                zoom: await value.getZoomLevel(),
-                target:
-                    LatLng(position!["latitude"], position!["longitude"]))));
-          }
-        });
-      });
+    timer = Timer.periodic(Duration(seconds: 2), (timer) async {
+      try {
+        if (await InternetConnectionChecker().hasConnection) {
+          ScaffoldMessenger.of(context).clearSnackBars();
+          http
+              .get(Uri.parse("http://api.open-notify.org/astros.json"))
+              .then((value) {
+            totalPeople = jsonDecode(value.body);
+          });
+          http
+              .get(Uri.parse("https://api.wheretheiss.at/v1/satellites/25544"))
+              .then((response) {
+            position = jsonDecode(response.body);
+            if (mounted) {
+              setState(() {});
+            }
+            if (mounted) {
+              controller.future.then((value) async {
+                if (position != null) {
+                  value.animateCamera(CameraUpdate.newCameraPosition(
+                      CameraPosition(
+                          zoom: await value.getZoomLevel(),
+                          target: LatLng(
+                              position!["latitude"], position!["longitude"]))));
+                }
+              });
+            }
+          });
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("No Internet Connection!"),
+            backgroundColor: Colors.red,
+            duration: Duration(seconds: 10),
+          ));
+        }
+      } on SocketException catch (e) {
+        print(e);
+      }
     });
     super.initState();
+  }
+
+  Timer? timer;
+
+  @override
+  void dispose() {
+    timer!.cancel();
+    super.dispose();
   }
 
   void loadData() async {
@@ -59,7 +87,7 @@ class _WhereIsISSState extends State<WhereIsISS> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "Where Is ISS".toUpperCase(),
+            "Track The Station".toUpperCase(),
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           backgroundColor: Colors.blueGrey.shade800,
@@ -105,7 +133,7 @@ class _WhereIsISSState extends State<WhereIsISS> {
                   ),
                   Text(
                     position != null
-                        ? "Latitude: ${double.parse(position!["latitude"].toStringAsFixed(2))} | Longitude: ${double.parse(position!["longitude"].toStringAsFixed(2))}"
+                        ? "Position Of International Space Station\nLatitude: ${double.parse(position!["latitude"].toStringAsFixed(2))} | Longitude: ${double.parse(position!["longitude"].toStringAsFixed(2))}"
                         : "No Data Available",
                     style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),

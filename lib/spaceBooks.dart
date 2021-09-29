@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webviewx/webviewx.dart';
 
@@ -150,21 +151,29 @@ class _SpaceBooksState extends State<SpaceBooks> {
   Future<void> refresh() async {
     books = [];
     wantedBooks = [];
-    setState(() {
-      loading = true;
-    });
-    await ref.child("Books").once().then((value) {
-      List result = value.value;
-      for (var i = 0; i < result.length; i++) {
-        books.add(result.reversed.toList()[i]);
-        print(books);
-      }
-    });
-    wantedBooks = books;
-    if (mounted) {
+    if (await InternetConnectionChecker().hasConnection) {
       setState(() {
-        loading = false;
+        loading = true;
       });
+      await ref.child("Books").once().then((value) {
+        List result = value.value;
+        for (var i = 0; i < result.length; i++) {
+          books.add(result.reversed.toList()[i]);
+          print(books);
+        }
+      });
+      wantedBooks = books;
+      if (mounted) {
+        setState(() {
+          loading = false;
+        });
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("No Internet Connection!"),
+        backgroundColor: Colors.red,
+        duration: Duration(seconds: 5),
+      ));
     }
     // if (books.length >= 15) {
     //   for (var i = 0; i < 15; i++) {

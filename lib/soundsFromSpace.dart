@@ -3,6 +3,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:just_audio/just_audio.dart';
 
 class SoundsFromSpace extends StatefulWidget {
@@ -91,6 +92,7 @@ class _SoundsFromSpaceState extends State<SoundsFromSpace> {
     }
   ];
   int? selectedSound;
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     print(player.duration);
@@ -131,6 +133,12 @@ class _SoundsFromSpaceState extends State<SoundsFromSpace> {
         child: Padding(
             padding: const EdgeInsets.all(15),
             child: Column(children: [
+              loading
+                  ? LinearProgressIndicator(
+                      color: Colors.redAccent,
+                      backgroundColor: Colors.grey.shade300,
+                    )
+                  : SizedBox(),
               player.duration != null
                   ? Image(
                       image: AssetImage(
@@ -219,16 +227,31 @@ class _SoundsFromSpaceState extends State<SoundsFromSpace> {
                         title: Text(sounds[count]["Name"]),
                         subtitle: Text("Source: " + sounds[count]["Credit"]),
                         onTap: () async {
-                          setState(() {
-                            selectedSound = count;
-                          });
-                          await player.setUrl(sounds[count]["URL"]);
-                          await player.load();
-                          setState(() {});
-                          print(player.duration);
-                          await player.play();
-                          setState(() {});
-                          setState(() {});
+                          if (loading == false) {
+                            if (await InternetConnectionChecker()
+                                .hasConnection) {
+                              setState(() {
+                                selectedSound = count;
+                                loading = true;
+                              });
+                              await player.setUrl(sounds[count]["URL"]);
+                              await player.load();
+                              setState(() {
+                                loading = false;
+                              });
+                              print(player.duration);
+                              await player.play();
+                              setState(() {});
+                              setState(() {});
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text("No Internet Connection!"),
+                                backgroundColor: Colors.red,
+                                duration: Duration(seconds: 3),
+                              ));
+                            }
+                          }
                         });
                   },
                 ),
