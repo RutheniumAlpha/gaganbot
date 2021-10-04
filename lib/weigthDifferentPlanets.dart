@@ -56,25 +56,36 @@ class _WeigthDifferentPlanetsState extends State<WeigthDifferentPlanets> {
               SizedBox(
                 height: 20,
               ),
-              NumberPicker(
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey, width: 2),
-                    borderRadius: BorderRadius.circular(15)),
-                axis: Axis.horizontal,
-                minValue: 1,
-                maxValue: 200,
-                itemCount: 3,
-                itemHeight: 100,
-                infiniteLoop: true,
-                itemWidth: 110,
-                textStyle: TextStyle(fontSize: 40, color: Colors.grey),
-                selectedTextStyle: TextStyle(fontSize: 40, color: Colors.white),
-                value: pickervalue,
-                onChanged: (value) {
-                  pickervalue = value;
-                  setState(() {});
-                  calculate();
-                },
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    height: 110,
+                    width: 330,
+                    child: NumberPicker(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey, width: 2),
+                          borderRadius: BorderRadius.circular(15)),
+                      axis: Axis.horizontal,
+                      minValue: 1,
+                      maxValue: 200,
+                      itemCount: 3,
+                      itemHeight: 100,
+                      infiniteLoop: true,
+                      itemWidth: 110,
+                      textStyle: TextStyle(fontSize: 40, color: Colors.grey),
+                      selectedTextStyle:
+                          TextStyle(fontSize: 40, color: Colors.white),
+                      value: pickervalue,
+                      onChanged: (value) {
+                        pickervalue = value;
+                        setState(() {});
+                        calculate();
+                      },
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 50,

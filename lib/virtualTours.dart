@@ -31,6 +31,11 @@ class _VirtualToursState extends State<VirtualTours> {
         agency: "VIS Museum | India",
         type: TourType.ar),
     VirtualTour(
+        title: "Mangalyan",
+        link: "https://www.youtube.com/watch?v=smRSEUT8yX0",
+        agency: "National Geographic India | Youtube",
+        type: TourType.video),
+    VirtualTour(
         title: "SpaceX Crew Dragon Tour",
         link: "https://www.youtube.com/watch?v=Rc5D2Jb7qXQ",
         agency: "SpaceX | USA",
@@ -57,7 +62,43 @@ class _VirtualToursState extends State<VirtualTours> {
         title: "Space Shuttle Discovery",
         link: "https://www.youtube.com/watch?v=o3XS_5L--Qg",
         agency: "Google Arts And Culture",
-        type: TourType.ar)
+        type: TourType.ar),
+    VirtualTour(
+        title:
+            "Grand tour of the International Space Station with Drew and Luca",
+        link: "https://www.youtube.com/watch?v=Snn1k_qEx20",
+        agency: "ESA",
+        type: TourType.video),
+    VirtualTour(
+        title: "MIR Space Station Documentary",
+        link: "https://www.youtube.com/watch?v=LieKRJcUG0c",
+        agency: "Star Walk | Youtube",
+        type: TourType.video),
+    VirtualTour(
+        title: "Rocket Science Explained By Elon Musk",
+        link: "https://www.youtube.com/watch?v=hTSVvQJHboE",
+        agency: "ritm 1 | Youtube",
+        type: TourType.video),
+    VirtualTour(
+        title: "Astronaut Training: Space Walk",
+        link: "https://www.youtube.com/watch?v=lil_I_-7aOM",
+        agency: "NASA",
+        type: TourType.ar),
+    VirtualTour(
+        title: "Orion Nebula - 360 Degree View",
+        link: "https://www.youtube.com/watch?v=1-goEmM0c4Q",
+        agency: "NASA",
+        type: TourType.ar),
+    VirtualTour(
+        title: "Ride in Boeing Starliner atop a ULA Atlas V",
+        link: "https://www.youtube.com/watch?v=zKjFF9Fqt4I",
+        agency: "Boeing",
+        type: TourType.ar),
+    VirtualTour(
+        title: "Virgin Galactic's First Fully Crewed Spaceflight",
+        link: "https://www.youtube.com/watch?v=ZPrB3WvnZpE&t=6s",
+        agency: "Virgin Galactic",
+        type: TourType.video)
   ];
   List<Widget> items = [];
 

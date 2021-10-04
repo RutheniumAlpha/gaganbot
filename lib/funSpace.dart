@@ -1,5 +1,6 @@
 import 'package:atl_space_challenge_project/compareRockets.dart';
 import 'package:atl_space_challenge_project/howFastYouSpin.dart';
+import 'package:atl_space_challenge_project/simulations.dart';
 import 'package:atl_space_challenge_project/spaceQuiz.dart';
 import 'package:atl_space_challenge_project/whereIsISS.dart';
 import 'package:flutter/material.dart';
@@ -133,6 +134,35 @@ class _FunSpaceState extends State<FunSpace> {
                             alignment: Alignment.center,
                             child: Text(
                               "Compare Rockets",
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 3),
+                            ),
+                            height: 60,
+                            width: double.infinity,
+                          ),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Simulations()),
+                          );
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)),
+                          elevation: 10,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Simulations",
                               textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(

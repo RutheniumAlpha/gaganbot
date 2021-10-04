@@ -6,18 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SpaceWeb extends StatefulWidget {
+class Simulations extends StatefulWidget {
   @override
-  _SpaceWebState createState() => _SpaceWebState();
+  _SimulationsState createState() => _SimulationsState();
 }
 
 final fb = FirebaseDatabase.instance;
 bool loading = false;
 
-class _SpaceWebState extends State<SpaceWeb> {
+class _SimulationsState extends State<Simulations> {
   final ref = fb.reference();
   List<Map> books = [];
-  List<Map> wantedWebPages = [];
+  List<Map> wantedSimulations = [];
   void initState() {
     super.initState();
     refresh();
@@ -28,7 +28,7 @@ class _SpaceWebState extends State<SpaceWeb> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Space Web".toUpperCase(),
+          "Simulations".toUpperCase(),
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.blueGrey.shade800,
@@ -87,20 +87,20 @@ class _SpaceWebState extends State<SpaceWeb> {
                                   minVerticalPadding: 0,
                                   minLeadingWidth: 35,
                                   onTap: () {
-                                    launch(wantedWebPages[count]["Link"]);
+                                    launch(wantedSimulations[count]["Link"]);
                                   },
                                   leading: Icon(
-                                    Icons.language,
+                                    Icons.smart_toy_outlined,
                                     color: colors[random.nextInt(6)],
                                     size: 35,
                                   ),
                                   title: Text(
-                                    wantedWebPages[count]["Title"],
+                                    wantedSimulations[count]["Name"],
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 20),
                                   ),
                                   subtitle: Text(
-                                    wantedWebPages[count]["Description"],
+                                    wantedSimulations[count]["Description"],
                                     style: TextStyle(color: Colors.grey[400]),
                                   ),
                                   trailing: Icon(
@@ -116,7 +116,7 @@ class _SpaceWebState extends State<SpaceWeb> {
                                 color: Colors.grey.withOpacity(0.4),
                               );
                             },
-                            itemCount: wantedWebPages.length,
+                            itemCount: wantedSimulations.length,
                           ),
                         ),
                       ),
@@ -128,19 +128,19 @@ class _SpaceWebState extends State<SpaceWeb> {
 
   Future<void> refresh() async {
     books = [];
-    wantedWebPages = [];
+    wantedSimulations = [];
     if (await InternetConnectionChecker().hasConnection) {
       setState(() {
         loading = true;
       });
-      await ref.child("Space Web").once().then((value) {
+      await ref.child("Simulation").once().then((value) {
         List result = value.value;
         for (var i = 0; i < result.length; i++) {
           books.add(result[i]);
           print(books);
         }
       });
-      wantedWebPages = books;
+      wantedSimulations = books;
       if (mounted) {
         setState(() {
           loading = false;
@@ -155,11 +155,11 @@ class _SpaceWebState extends State<SpaceWeb> {
     }
     // if (books.length >= 15) {
     //   for (var i = 0; i < 15; i++) {
-    //     wantedWebPages.add(books[i]);
+    //     wantedSimulations.add(books[i]);
     //   }
     // } else {
     //   for (var i = 0; i < books.length; i++) {
-    //     wantedWebPages.add(books[i]);
+    //     wantedSimulations.add(books[i]);
     //   }
     // }
   }

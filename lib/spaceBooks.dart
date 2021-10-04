@@ -5,7 +5,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:webviewx/webviewx.dart';
 
 class SpaceBooks extends StatefulWidget {
   @override
@@ -88,18 +87,7 @@ class _SpaceBooksState extends State<SpaceBooks> {
                                 minVerticalPadding: 0,
                                 minLeadingWidth: 35,
                                 onTap: () {
-                                  if (wantedBooks[count]["Availability"] ==
-                                      "Free") {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => BookViewer(
-                                                  url: wantedBooks[count]
-                                                      ["URL"],
-                                                )));
-                                  } else {
-                                    launch(wantedBooks[count]["URL"]);
-                                  }
+                                  launch(wantedBooks[count]["URL"]);
                                 },
                                 leading: Icon(
                                   Icons.book,
@@ -187,26 +175,34 @@ class _SpaceBooksState extends State<SpaceBooks> {
   }
 }
 
-class BookViewer extends StatelessWidget {
-  final String? url;
-  BookViewer({this.url});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Book Viewer".toUpperCase(),
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: Colors.blueGrey.shade800,
-        elevation: 0,
-      ),
-      body: WebViewX(
-        height: double.infinity,
-        width: double.infinity,
-        initialContent: url!,
-        initialSourceType: SourceType.url,
-      ),
-    );
-  }
-}
+// class BookViewer extends StatefulWidget {
+//   final String? url;
+//   BookViewer({this.url});
+//   @override
+//   State<StatefulWidget> createState() {
+//     return BookViewerState(url: url);
+//   }
+// }
+
+// class BookViewerState extends State<BookViewer> {
+//   final String? url;
+//   BookViewerState({this.url});
+//   @override
+//   void initState() {
+//     super.initState();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(
+//           title: Text(
+//             "Book Viewer".toUpperCase(),
+//             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+//           ),
+//           backgroundColor: Colors.blueGrey.shade800,
+//           elevation: 0,
+//         ),
+//         body: PDF().fromUrl(url!));
+//   }
+// }

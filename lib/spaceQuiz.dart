@@ -61,14 +61,14 @@ class _QuizHomePageState extends State<QuizHomePage> {
                       children: [
                         Tooltip(
                             message: "Planet Badge",
-                            child: box.get("points", defaultValue: 0) >= 500
+                            child: box.get("points", defaultValue: 0) >= 200
                                 ? Image.asset(
                                     "assets/images/icons/planetBadge.png",
                                     fit: BoxFit.fill,
                                     height: 90,
                                     width: 110,
                                   )
-                                : createEmptyBadge(500, "Planet Badge")),
+                                : createEmptyBadge(200, "Planet Badge")),
                         SizedBox(
                           width: 10,
                         ),
@@ -100,14 +100,14 @@ class _QuizHomePageState extends State<QuizHomePage> {
                         ),
                         Tooltip(
                             message: "Big Bang Badge",
-                            child: box.get("points", defaultValue: 0) >= 10000
+                            child: box.get("points", defaultValue: 0) >= 8000
                                 ? Image.asset(
                                     "assets/images/icons/bigBangBadge.png",
                                     fit: BoxFit.fill,
                                     height: 90,
                                     width: 110,
                                   )
-                                : createEmptyBadge(10000, "Big Bang Badge")),
+                                : createEmptyBadge(8000, "Big Bang Badge")),
                       ],
                     ),
                   ),

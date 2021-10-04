@@ -32,7 +32,6 @@ dependencies:
   google_maps_flutter: ^2.0.9
   internet_connection_checker: ^0.0.1+2
   url_launcher: ^6.0.10
-  syncfusion_flutter_sliders: ^19.2.62
   firebase_core: ^1.6.0
   firebase_database: ^8.0.0
   hive: ^2.0.4
