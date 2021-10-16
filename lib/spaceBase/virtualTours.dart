@@ -98,7 +98,17 @@ class _VirtualToursState extends State<VirtualTours> {
         title: "Virgin Galactic's First Fully Crewed Spaceflight",
         link: "https://www.youtube.com/watch?v=ZPrB3WvnZpE&t=6s",
         agency: "Virgin Galactic",
-        type: TourType.video)
+        type: TourType.video),
+    VirtualTour(
+        title: "360 Video: Inside Boeing’s Starliner Capsule",
+        link: "https://www.youtube.com/watch?v=ye2TKplLqp0",
+        agency: "NBC News",
+        type: TourType.ar),
+    VirtualTour(
+        title: "The Hubble Space Telescope 360° Tour",
+        link: "https://www.youtube.com/watch?v=XZ_WeTGCU9o",
+        agency: "NASA Goddard",
+        type: TourType.ar)
   ];
   List<Widget> items = [];
 

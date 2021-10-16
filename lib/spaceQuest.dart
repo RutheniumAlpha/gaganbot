@@ -1,7 +1,7 @@
-import 'package:atl_space_challenge_project/cosmicObjects.dart';
-import 'package:atl_space_challenge_project/indianSkyMap.dart';
-import 'package:atl_space_challenge_project/soundsFromSpace.dart';
-import 'package:atl_space_challenge_project/starSizeComparison.dart';
+import 'package:atl_space_challenge_project/spaceQuest/cosmicObjects.dart';
+import 'package:atl_space_challenge_project/spaceQuest/indianSkyMap.dart';
+import 'package:atl_space_challenge_project/spaceQuest/soundsFromSpace.dart';
+import 'package:atl_space_challenge_project/spaceQuest/starSizeComparison.dart';
 import 'package:flutter/material.dart';
 
 class SpaceQuest extends StatefulWidget {

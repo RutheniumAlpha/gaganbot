@@ -1,8 +1,8 @@
-import 'package:atl_space_challenge_project/indianSpaceSpots.dart';
-import 'package:atl_space_challenge_project/isroTimeLine.dart';
-import 'package:atl_space_challenge_project/spaceBooks.dart';
-import 'package:atl_space_challenge_project/spaceWeb.dart';
-import 'package:atl_space_challenge_project/virtualTours.dart';
+import 'package:atl_space_challenge_project/spaceBase/indianSpaceSpots.dart';
+import 'package:atl_space_challenge_project/spaceBase/isroTimeLine.dart';
+import 'package:atl_space_challenge_project/spaceBase/spaceBooks.dart';
+import 'package:atl_space_challenge_project/spaceBase/spaceWeb.dart';
+import 'package:atl_space_challenge_project/spaceBase/virtualTours.dart';
 import 'package:flutter/material.dart';
 
 class SpaceBase extends StatefulWidget {

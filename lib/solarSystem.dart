@@ -1,8 +1,8 @@
-import 'package:atl_space_challenge_project/howFarIsThePlanet.dart';
-import 'package:atl_space_challenge_project/solarSystem3DView.dart';
-import 'package:atl_space_challenge_project/top5elements.dart';
-import 'package:atl_space_challenge_project/weigthDifferentPlanets.dart';
-import 'package:atl_space_challenge_project/whoIsBigger.dart';
+import 'package:atl_space_challenge_project/solarSystem/howFarIsThePlanet.dart';
+import 'package:atl_space_challenge_project/solarSystem/solarSystem3DView.dart';
+import 'package:atl_space_challenge_project/solarSystem/top5elements.dart';
+import 'package:atl_space_challenge_project/solarSystem/weigthDifferentPlanets.dart';
+import 'package:atl_space_challenge_project/solarSystem/whoIsBigger.dart';
 import 'package:flutter/material.dart';
 
 class SolarSystem extends StatefulWidget {
