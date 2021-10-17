@@ -69,5 +69,23 @@ Space amazes everyone, but it is sometimes difficult to get a notion of the extr
       view network connection, full network access
     </td>
   </tr>
+  <tr>
+    <td>
+      Size:
+    </td>
+    <td>
+      53 Mb
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Developed With:
+    </td>
+    <td>
+      Flutter (Dart)
+    </td>
+  </tr>
   
 </table>
+<br>
+<a href="https://play.google.com/store/apps/details?id=com.madhavanair.gaganbot"><b>Google Play Store</b> Download</a>
